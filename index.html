@@ -3,79 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leonino | Automação e Dados</title>
+
+  <!-- SEO básico -->
+  <title>Breno Zanon | Automação, Dados e IA</title>
+  <meta name="description" content="Automação de processos, RPA, Power BI e soluções com IA para negócios.">
+
+  <!-- Fonte moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg: #0f172a;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --text: #ffffff;
+      --subtext: #94a3b8;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
     }
 
     body {
-      background: #0f172a;
-      color: #fff;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .container {
+      width: 100%;
+      max-width: 420px;
       text-align: center;
-      width: 90%;
-      max-width: 400px;
+      animation: fadeIn 0.8s ease-in-out;
     }
 
     h1 {
-      margin-bottom: 10px;
       font-size: 28px;
+      margin-bottom: 10px;
     }
 
-    p {
+    .subtitle {
+      font-size: 14px;
+      color: var(--subtext);
       margin-bottom: 25px;
-      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .link {
-      display: block;
-      margin: 10px 0;
       padding: 14px;
-      background: #2563eb;
       border-radius: 10px;
-      text-decoration: none;
+      background: var(--primary);
       color: white;
-      font-weight: bold;
-      transition: 0.3s;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.25s ease;
     }
 
     .link:hover {
-      background: #1d4ed8;
-      transform: scale(1.03);
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .secondary {
+      background: transparent;
+      border: 1px solid var(--primary);
+    }
+
+    .secondary:hover {
+      background: var(--primary);
+    }
+
+    .proof {
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--subtext);
     }
 
     .footer {
-      margin-top: 20px;
-      font-size: 12px;
+      margin-top: 25px;
+      font-size: 11px;
       color: #64748b;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Leonino</h1>
-    <p>Automação | Dados | IA</p>
+  <main class="container">
 
-    <a class="link" href="#" target="_blank">📊 Portfólio</a>
-    <a class="link" href="#" target="_blank">💻 GitHub</a>
-    <a class="link" href="#" target="_blank">🔗 LinkedIn</a>
-    <a class="link" href="#" target="_blank">📞 WhatsApp</a>
+    <h1>Breno Zanon</h1>
+
+    <p class="subtitle">
+      Transformo processos manuais em automações inteligentes com Python, Power BI e IA.
+    </p>
+
+    <div class="links">
+      <a class="link" href="#" target="_blank">📊 Ver Portfólio</a>
+      <a class="link" href="#" target="_blank">💻 GitHub</a>
+      <a class="link secondary" href="#" target="_blank">🔗 LinkedIn</a>
+      <a class="link secondary" href="#" target="_blank">📞 Falar no WhatsApp</a>
+    </div>
+
+    <p class="proof">
+      + Projetos em automação • Dashboards estratégicos • Integrações com APIs
+    </p>
 
     <div class="footer">
-      © 2026 - Todos os direitos reservados
+      © 2026 • Desenvolvido por Breno Zanon
     </div>
-  </div>
+
+  </main>
 </body>
 </html>
