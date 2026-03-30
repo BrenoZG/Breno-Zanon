@@ -9,152 +9,212 @@
 
   <style>
     :root {
-      --vinho: #6B1E35;
-      --vinho-escuro: #4A1224;
-      --beje: #C9B99A;
-      --beje-claro: #E8DDD0;
-      --cinza: #3A3A3A;
-      --fundo: #0F0A0C;
+      --vinho:#6B1E35;
+      --vinho-escuro:#4A1224;
+      --vinho-claro:#8B2A45;
+      --beje:#C9B99A;
+      --beje-claro:#E8DDD0;
+      --cinza:#3A3A3A;
+      --fundo:#0F0A0C;
+    }
+
+    * {
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
     body {
-      margin: 0;
-      font-family: 'DM Sans', sans-serif;
-      background: var(--fundo);
-      color: var(--beje-claro);
+      cursor:none;
+      font-family:'DM Sans', sans-serif;
+      background:var(--fundo);
+      color:var(--beje-claro);
+      overflow-x:hidden;
     }
 
+    /* BACKGROUND IGUAL HOME */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(107,30,53,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(107,30,53,0.08) 1px, transparent 1px);
+      background-size: 42px 42px;
+      z-index:0;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width:600px;
+      height:600px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(107,30,53,0.2), transparent 70%);
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      z-index:0;
+    }
+
+    /* CURSOR */
+    #cursor {
+      width:20px;
+      height:20px;
+      position:fixed;
+      pointer-events:none;
+      z-index:9999;
+    }
+
+    /* CONTAINER */
     .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 3rem 1.5rem;
+      position:relative;
+      z-index:10;
+      max-width:1100px;
+      margin:auto;
+      padding:3rem 1.5rem;
     }
 
     h1 {
-      font-family: 'Syne', sans-serif;
-      text-align: center;
-      margin-bottom: 2rem;
+      font-family:'Syne', sans-serif;
+      text-align:center;
+      margin-bottom:2.5rem;
+      font-size:32px;
     }
 
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:1.5rem;
     }
 
     .card {
-      background: linear-gradient(135deg, var(--vinho-escuro), #2E0A16);
-      padding: 1.5rem;
-      border-radius: 14px;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(201,185,154,0.1);
+      background:linear-gradient(135deg,var(--vinho-escuro),#2E0A16);
+      padding:1.5rem;
+      border-radius:14px;
+      transition:.3s;
+      border:1px solid rgba(201,185,154,0.1);
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(107,30,53,0.5);
+      transform:translateY(-6px);
+      box-shadow:0 10px 30px rgba(107,30,53,0.6);
     }
 
     .card h3 {
-      font-size: 16px;
-      margin-bottom: 0.8rem;
-      color: var(--beje);
+      font-size:15px;
+      color:var(--beje);
+      margin-bottom:.6rem;
     }
 
     .card p {
-      font-size: 13px;
-      color: #aaa;
-      margin-bottom: 1rem;
+      font-size:13px;
+      color:#aaa;
+      margin-bottom:1rem;
     }
 
     .btn {
-      display: inline-block;
-      padding: 0.6rem 1rem;
-      background: var(--vinho);
-      color: var(--beje-claro);
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 13px;
-      transition: 0.3s;
+      display:inline-block;
+      padding:.6rem 1rem;
+      background:linear-gradient(135deg,var(--vinho),var(--vinho-escuro));
+      color:var(--beje-claro);
+      border-radius:8px;
+      text-decoration:none;
+      font-size:13px;
+      transition:.3s;
     }
 
     .btn:hover {
-      background: var(--beje);
-      color: var(--vinho-escuro);
+      transform:scale(1.05);
+      box-shadow:0 5px 20px rgba(107,30,53,0.6);
     }
 
+    /* BOTÃO VOLTAR */
     .voltar {
-      display: block;
-      text-align: center;
-      margin-top: 3rem;
-      color: var(--beje);
-      text-decoration: none;
+      display:block;
+      margin:3rem auto 0;
+      text-align:center;
+      color:var(--beje);
+      text-decoration:none;
+      font-size:14px;
+    }
+
+    .voltar:hover {
+      color:var(--beje-claro);
     }
 
   </style>
 </head>
+
 <body>
 
-  <div class="container">
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
 
-    <h1>🚀 Meus Projetos</h1>
+<main class="container">
 
-    <div class="grid">
+<h1>🚀 Meus Projetos</h1>
 
-      <!-- PROJETO 1 -->
-      <div class="card">
-        <h3>Automação Baixa Separação Pedidos</h3>
-        <p>Automação do processo de baixa e separação de pedidos de marketplace.</p>
-        <a href="https://github.com/BrenoZG/Automacao_Baixa_Separacao_Pedidos_Marketplace" target="_blank" class="btn">Ver no GitHub</a>
-      </div>
+<div class="grid">
 
-      <!-- PROJETO 2 -->
-      <div class="card">
-        <h3>Conciliação Canhotos e Fretes</h3>
-        <p>Automação para conferência e conciliação logística de fretes.</p>
-        <a href="#" class="btn">Ver Projeto</a>
-      </div>
+<div class="card">
+<h3>Automação Baixa Separação</h3>
+<p>Automação completa de pedidos marketplace.</p>
+<a href="https://github.com/BrenoZG/Automacao_Baixa_Separacao_Pedidos_Marketplace" target="_blank" class="btn">Ver Projeto</a>
+</div>
 
-      <!-- PROJETO 3 -->
-      <div class="card">
-        <h3>Editar Pedidos Shopee</h3>
-        <p>Automação para edição em massa de pedidos na Shopee.</p>
-        <a href="#" class="btn">Ver Projeto</a>
-      </div>
+<div class="card">
+<h3>Conciliação Fretes</h3>
+<p>Validação automatizada logística.</p>
+<a href="#" class="btn">Ver Projeto</a>
+</div>
 
-      <!-- PROJETO 4 -->
-      <div class="card">
-        <h3>Emissão Devolução</h3>
-        <p>Automação para emissão de processos de devolução.</p>
-        <a href="#" class="btn">Ver Projeto</a>
-      </div>
+<div class="card">
+<h3>Editar Pedidos Shopee</h3>
+<p>Edição em massa automatizada.</p>
+<a href="#" class="btn">Ver Projeto</a>
+</div>
 
-      <!-- PROJETO 5 -->
-      <div class="card">
-        <h3>Faturamento Produtos ABC</h3>
-        <p>Automação de faturamento com classificação ABC.</p>
-        <a href="#" class="btn">Ver Projeto</a>
-      </div>
+<div class="card">
+<h3>Emissão Devolução</h3>
+<p>Processo automatizado de devoluções.</p>
+<a href="#" class="btn">Ver Projeto</a>
+</div>
 
-      <!-- PROJETO 6 -->
-      <div class="card">
-        <h3>Gerar Abastecimento Lojas</h3>
-        <p>Geração automatizada de abastecimento de lojas.</p>
-        <a href="#" class="btn">Ver Projeto</a>
-      </div>
+<div class="card">
+<h3>Faturamento ABC</h3>
+<p>Automação com classificação inteligente.</p>
+<a href="#" class="btn">Ver Projeto</a>
+</div>
 
-      <!-- PROJETO 7 -->
-      <div class="card">
-        <h3>Sistema Web de Gestão Financeira</h3>
-        <p>Sistema web para controle e gestão de finanças, com foco em organização, análise e tomada de decisão.</p>
-        <a href="https://github.com/BrenoZG/Sistema_WEB_Gestao_Financas" target="_blank" class="btn">Ver no GitHub</a>
-      </div>
+<div class="card">
+<h3>Abastecimento Lojas</h3>
+<p>Geração automática de reposição.</p>
+<a href="#" class="btn">Ver Projeto</a>
+</div>
 
-    </div>
+<div class="card">
+<h3>Sistema Web Financeiro</h3>
+<p>Gestão financeira com foco analítico.</p>
+<a href="https://github.com/BrenoZG/Sistema_WEB_Gestao_Financas" target="_blank" class="btn">Ver Projeto</a>
+</div>
 
-    <a href="index.html" class="voltar">← Voltar para Home</a>
+</div>
 
-  </div>
+<a href="Home_Portfolio.html" class="voltar">← Voltar para Home</a>
+
+</main>
+
+<script>
+const cursor = document.createElement("div");
+cursor.id = "cursor";
+cursor.style.background = "#C9B99A";
+cursor.style.borderRadius = "50%";
+document.body.appendChild(cursor);
+
+document.addEventListener("mousemove", e => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+</script>
 
 </body>
 </html>
