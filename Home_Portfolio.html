@@ -13,13 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
 
   <style>
-    /* =============================================
-       VARIÁVEIS DE CORES E TEMA
-       ============================================= */
     :root {
-      --vinho:         #6B1E35;
-      --vinho-escuro:  #4A1224;
-      --vinho-claro:   #8B2A45;
+      --vinho:         #5C1228;
+      --vinho-escuro:  #360818;
+      --vinho-claro:   #7A1E38;
       --beje:          #C9B99A;
       --beje-claro:    #E8DDD0;
       --beje-escuro:   #A89070;
@@ -31,18 +28,8 @@
       --verde-wp:      #4CAF82;
     }
 
-    /* =============================================
-       RESET E BASE
-       ============================================= */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       cursor: none;
@@ -57,146 +44,233 @@
       position: relative;
     }
 
-    /* =============================================
-       CURSOR CUSTOMIZADO (ícone de código/terminal)
-       ============================================= */
     #cursor {
-      width: 22px;
-      height: 22px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+      width: 22px; height: 22px;
+      position: fixed; top:0; left:0;
+      pointer-events: none; z-index: 9999;
+      transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
       transform-origin: center center;
     }
-
-    /* Anel orbitando com delay (efeito trail) */
     #cursor-trail {
-      width: 44px;
-      height: 44px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 9998;
+      width: 44px; height: 44px;
+      position: fixed; top:0; left:0;
+      pointer-events: none; z-index: 9998;
       opacity: 0.45;
-      transition: left 0.18s ease, top 0.18s ease, transform 0.2s ease;
     }
 
-    /* =============================================
-       FUNDO: GRID, GLOW E EFEITOS DE PROFUNDIDADE
-       ============================================= */
-    .bg-grid {
+    .blob {
       position: fixed;
-      inset: 0;
+      pointer-events: none;
+      will-change: transform, border-radius;
+      z-index: 1;
+    }
+
+    .b1 {
+      width: 62vw; height: 58vw;
+      max-width: 820px; max-height: 760px;
+      background: radial-gradient(ellipse at 40% 40%,
+        #8B1E38 0%, #5C0F22 42%, #2E0510 74%, transparent 100%);
+      opacity: .75;
+      top: -18%; left: -12%;
+      filter: blur(55px);
+      animation: morph1 11s ease-in-out infinite alternate,
+                 drift1 15s ease-in-out infinite alternate;
+    }
+
+    .b2 {
+      width: 58vw; height: 64vw;
+      max-width: 780px; max-height: 840px;
+      background: radial-gradient(ellipse at 58% 60%,
+        #7B1E35 0%, #4A0E1C 44%, #1E0509 78%, transparent 100%);
+      opacity: .80;
+      bottom: -20%; right: -10%;
+      filter: blur(60px);
+      animation: morph2 13s ease-in-out infinite alternate,
+                 drift2 17s ease-in-out infinite alternate;
+    }
+
+    .b3 {
+      width: 44vw; height: 46vw;
+      max-width: 580px; max-height: 600px;
+      background: radial-gradient(ellipse at 48% 44%,
+        #8B2040 0%, #5C0F22 52%, transparent 100%);
+      opacity: .65;
+      top: 20%; right: 4%;
+      filter: blur(50px);
+      animation: morph3 9s ease-in-out infinite alternate,
+                 drift3 12s ease-in-out infinite alternate;
+    }
+
+    .b4 {
+      width: 58vw; height: 52vw;
+      max-width: 760px; max-height: 680px;
+      background: radial-gradient(ellipse at 50% 50%,
+        rgba(255,255,255,0.36) 0%,
+        rgba(255,255,255,0.18) 32%,
+        transparent 100%);
+      opacity: 1;
+      top: 22%; left: 4%;
+      filter: blur(44px);
+      animation: morph4 12s ease-in-out infinite alternate,
+                 drift4 16s ease-in-out infinite alternate;
+    }
+
+    .b5 {
+      width: 48vw; height: 40vw;
+      max-width: 620px; max-height: 520px;
+      background: radial-gradient(ellipse at 50% 50%,
+        rgba(240,232,220,0.32) 0%,
+        rgba(240,232,220,0.14) 40%,
+        transparent 100%);
+      opacity: 1;
+      top: 2%; left: 24%;
+      filter: blur(40px);
+      animation: morph1 14s ease-in-out infinite alternate,
+                 drift3 19s ease-in-out infinite alternate;
+    }
+
+    .b6 {
+      width: 44vw; height: 40vw;
+      max-width: 570px; max-height: 520px;
+      background: radial-gradient(ellipse at 50% 50%,
+        rgba(255,255,255,0.28) 0%,
+        rgba(255,255,255,0.12) 38%,
+        transparent 100%);
+      opacity: 1;
+      bottom: 4%; left: 4%;
+      filter: blur(42px);
+      animation: morph3 16s ease-in-out infinite alternate,
+                 drift1 20s ease-in-out infinite alternate;
+    }
+
+    .b7 {
+      width: 38vw; height: 34vw;
+      max-width: 490px; max-height: 440px;
+      background: radial-gradient(ellipse at 50% 50%,
+        rgba(232,221,208,0.26) 0%,
+        rgba(232,221,208,0.10) 42%,
+        transparent 100%);
+      opacity: 1;
+      top: 5%; right: 5%;
+      filter: blur(46px);
+      animation: morph2 18s ease-in-out infinite alternate,
+                 drift4 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes morph1 {
+      0%   { border-radius: 58% 42% 36% 64% / 52% 38% 62% 48%; }
+      33%  { border-radius: 42% 58% 64% 36% / 68% 42% 58% 32%; }
+      66%  { border-radius: 64% 36% 48% 52% / 38% 64% 36% 62%; }
+      100% { border-radius: 52% 48% 38% 62% / 56% 32% 68% 44%; }
+    }
+    @keyframes morph2 {
+      0%   { border-radius: 48% 52% 62% 38% / 60% 44% 56% 40%; }
+      50%  { border-radius: 62% 38% 44% 56% / 38% 62% 44% 56%; }
+      100% { border-radius: 40% 60% 56% 44% / 52% 48% 60% 40%; }
+    }
+    @keyframes morph3 {
+      0%   { border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%; }
+      50%  { border-radius: 40% 60% 30% 70% / 55% 45% 60% 40%; }
+      100% { border-radius: 55% 45% 65% 35% / 35% 65% 45% 55%; }
+    }
+    @keyframes morph4 {
+      0%   { border-radius: 45% 55% 55% 45% / 65% 35% 65% 35%; }
+      50%  { border-radius: 65% 35% 45% 55% / 45% 55% 35% 65%; }
+      100% { border-radius: 55% 45% 65% 35% / 55% 45% 55% 45%; }
+    }
+    @keyframes drift1 {
+      0%   { transform: translate(0, 0);    }
+      100% { transform: translate(5vw, 7vh);}
+    }
+    @keyframes drift2 {
+      0%   { transform: translate(0, 0);     }
+      100% { transform: translate(-6vw,-5vh);}
+    }
+    @keyframes drift3 {
+      0%   { transform: translate(0, 0);    }
+      100% { transform: translate(-3vw,8vh);}
+    }
+    @keyframes drift4 {
+      0%   { transform: translate(0, 0);     }
+      100% { transform: translate(4vw,-6vh); }
+    }
+
+    .bg-grid {
+      position: fixed; inset: 0;
       background-image:
-        linear-gradient(rgba(107, 30, 53, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(107, 30, 53, 0.08) 1px, transparent 1px);
+        linear-gradient(rgba(107,30,53,0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(107,30,53,0.09) 1px, transparent 1px);
       background-size: 42px 42px;
       pointer-events: none;
-      z-index: 0;
+      z-index: 2;
     }
 
     .bg-glow {
       position: fixed;
-      width: 700px;
-      height: 700px;
+      width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(107, 30, 53, 0.18) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(107,30,53,0.10) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
       pointer-events: none;
-      z-index: 0;
+      z-index: 2;
     }
 
     .bg-orb-1 {
       position: fixed;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201, 185, 154, 0.07) 0%, transparent 70%);
-      top: 10%;
-      right: 8%;
-      pointer-events: none;
-      z-index: 0;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,185,154,0.06) 0%, transparent 70%);
+      top: 10%; right: 8%;
+      pointer-events: none; z-index: 2;
     }
-
     .bg-orb-2 {
       position: fixed;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(107, 30, 53, 0.14) 0%, transparent 70%);
-      bottom: 12%;
-      left: 8%;
-      pointer-events: none;
-      z-index: 0;
+      width: 180px; height: 180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(107,30,53,0.10) 0%, transparent 70%);
+      bottom: 12%; left: 8%;
+      pointer-events: none; z-index: 2;
     }
 
-    /* Linhas de scanline para textura "tech" */
     .bg-scanlines {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.04) 2px,
-        rgba(0, 0, 0, 0.04) 4px
+        0deg, transparent, transparent 2px,
+        rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px
       );
-      pointer-events: none;
-      z-index: 0;
+      pointer-events: none; z-index: 2;
     }
 
-    /* Código decorativo nas laterais */
+    #canvas-circuito {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 3;
+    }
+
     .codigo-decorativo {
       position: fixed;
       font-family: 'DM Sans', monospace;
       font-size: 11px;
-      color: rgba(107, 30, 53, 0.07);
-      user-select: none;
-      pointer-events: none;
-      line-height: 2;
-      white-space: pre;
-      z-index: 0;
+      color: rgba(107,30,53,0.07);
+      user-select: none; pointer-events: none;
+      line-height: 2; white-space: pre;
+      z-index: 4;
     }
-
     .codigo-esquerda { top: 12%; left: 2%; }
     .codigo-direita  { top: 22%; right: 2%; text-align: right; }
 
-    /* =============================================
-       CONTAINER PRINCIPAL
-       ============================================= */
     .container {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 440px;
+      position: relative; z-index: 10;
+      display: flex; flex-direction: column; align-items: center;
+      width: 100%; max-width: 440px;
       padding: 3rem 1.75rem 2.5rem;
-      /* Entrada animada ao carregar a página */
-      animation: entrada 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation: entrada 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
     }
 
     @keyframes entrada {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity:0; transform:translateY(24px); }
+      to   { opacity:1; transform:translateY(0); }
     }
 
-    /* =============================================
-       FOTO DE PERFIL
-       ============================================= */
     .foto-wrapper {
       position: relative;
       margin-bottom: 1.5rem;
@@ -204,373 +278,235 @@
     }
 
     @keyframes flutuar {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-9px); }
+      0%,100% { transform: translateY(0px); }
+      50%     { transform: translateY(-9px); }
     }
 
-    /* Anel com gradiente ao redor da foto */
+    #canvas-foto {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 5;
+    }
+
     .foto-anel {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      padding: 2px;
+      width: 100px; height: 100px;
+      border-radius: 50%; padding: 2px;
       background: linear-gradient(135deg, var(--vinho) 0%, var(--beje) 50%, var(--vinho-escuro) 100%);
       position: relative;
     }
 
-    /* Glow externo da foto */
     .foto-anel::before {
       content: '';
-      position: absolute;
-      inset: -5px;
-      border-radius: 50%;
+      position: absolute; inset: -5px; border-radius: 50%;
       background: linear-gradient(135deg, var(--vinho), var(--beje-escuro));
-      z-index: -1;
-      opacity: 0.35;
-      filter: blur(8px);
+      z-index: -1; opacity: 0.35; filter: blur(8px);
     }
 
     .foto-interna {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
+      width: 100%; height: 100%; border-radius: 50%;
       background: var(--cinza-ultra);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border: 2px solid var(--fundo);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; border: 2px solid var(--fundo);
     }
 
-    /*
-      COMO ADICIONAR SUA FOTO:
-      Substitua o conteúdo do .foto-interna por:
-      <img src="foto.jpg" alt="Breno Zanon" style="width:100%; height:100%; object-fit:cover;" />
-
-      E coloque seu arquivo de foto na mesma pasta do index.html.
-    */
     .foto-iniciais {
       font-family: 'Syne', sans-serif;
-      font-size: 36px;
-      font-weight: 800;
-      color: var(--beje);
-      letter-spacing: -1px;
-      /* Remova esta div quando adicionar a foto real */
+      font-size: 36px; font-weight: 800;
+      color: var(--beje); letter-spacing: -1px;
     }
 
-    /* Indicador de status "online" */
     .status-online {
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-      width: 15px;
-      height: 15px;
-      background: #2ECC71;
-      border-radius: 50%;
+      position: absolute; bottom: 5px; right: 5px;
+      width: 15px; height: 15px;
+      background: #2ECC71; border-radius: 50%;
       border: 2px solid var(--fundo);
-      box-shadow: 0 0 8px rgba(46, 204, 113, 0.6);
+      box-shadow: 0 0 8px rgba(46,204,113,0.6);
       animation: pulsar 2.2s ease-in-out infinite;
     }
 
     @keyframes pulsar {
-      0%, 100% { box-shadow: 0 0 8px rgba(46, 204, 113, 0.55); }
-      50%       { box-shadow: 0 0 18px rgba(46, 204, 113, 0.9), 0 0 36px rgba(46, 204, 113, 0.28); }
+      0%,100% { box-shadow: 0 0 8px rgba(46,204,113,0.55); }
+      50%     { box-shadow: 0 0 18px rgba(46,204,113,0.9), 0 0 36px rgba(46,204,113,0.28); }
     }
 
-    /* =============================================
-       NOME, CARGO E DESCRIÇÃO
-       ============================================= */
     .nome {
       font-family: 'Syne', sans-serif;
-      font-size: 30px;
-      font-weight: 800;
-      color: var(--beje-claro);
+      font-size: 30px; font-weight: 800;
+      color: #F5EDE3;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.55);
       letter-spacing: -0.5px;
-      text-align: center;
-      margin-bottom: 0.4rem;
+      text-align: center; margin-bottom: 0.4rem;
     }
-
     .nome span {
-      color: var(--vinho-claro);
+      color: #C05070;
+      text-shadow: 0 0 22px rgba(160,50,80,0.50);
     }
 
     .cargo {
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--beje-escuro);
-      text-transform: uppercase;
-      letter-spacing: 3.5px;
+      font-size: 11px; font-weight: 500;
+      color: #C9B99A;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.60);
+      text-transform: uppercase; letter-spacing: 3.5px;
       margin-bottom: 0.85rem;
     }
 
     .divisor {
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--vinho), transparent);
+      width: 40px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--vinho-claro), transparent);
       margin-bottom: 0.85rem;
     }
 
     .bio {
       font-size: 13.5px;
-      color: var(--cinza-claro);
-      text-align: center;
-      line-height: 1.75;
-      max-width: 320px;
-      margin-bottom: 2rem;
+      color: #A8A0A4;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.50);
+      text-align: center; line-height: 1.75;
+      max-width: 320px; margin-bottom: 2rem;
     }
+    .bio strong { color: #E8DDD0; font-weight: 500; }
 
-    .bio strong {
-      color: var(--beje);
-      font-weight: 500;
-    }
-
-    /* =============================================
-       BOTÕES
-       ============================================= */
     .botoes {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      width: 100%;
-      margin-bottom: 2rem;
+      display: flex; flex-direction: column;
+      gap: 0.7rem; width: 100%; margin-bottom: 2rem;
     }
 
     .btn {
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 0.95rem 1.5rem;
-      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 0.95rem 1.5rem; border-radius: 12px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.4px;
+      font-size: 14px; font-weight: 500; letter-spacing: 0.4px;
       cursor: none;
-      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-      overflow: hidden;
-      text-decoration: none;
-      border: none;
-      width: 100%;
-      text-align: center;
+      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      overflow: hidden; text-decoration: none; border: none;
+      width: 100%; text-align: center;
     }
 
-    /* Overlay de hover (pseudo-elemento) */
     .btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      pointer-events: none;
+      content: ''; position: absolute; inset: 0;
+      opacity: 0; transition: opacity 0.35s ease; pointer-events: none;
     }
 
-    /* Ícone do botão */
     .btn-icone {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-      position: relative;
-      z-index: 1;
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative; z-index: 1;
     }
-
-    /* Texto do botão — fica ACIMA do overlay */
-    .btn-texto {
-      position: relative; /* ← necessário para z-index funcionar */
-      z-index: 1;
-    }
-
-    /* Seta que aparece no hover */
+    .btn-texto { position: relative; z-index: 1; }
     .btn-seta {
-      position: absolute;
-      right: 1.25rem;
-      opacity: 0;
-      transform: translateX(-10px);
+      position: absolute; right: 1.25rem;
+      opacity: 0; transform: translateX(-10px);
       transition: all 0.3s ease;
-      font-size: 14px;
-      font-style: normal;
+      font-size: 14px; font-style: normal;
     }
 
-    /* Estados de hover */
-    .btn:hover .btn-seta  { opacity: 1; transform: translateX(0); }
-    .btn:hover .btn-icone { transform: scale(1.2) rotate(-5deg); }
-    .btn:hover            { transform: translateY(-3px) scale(1.02); }
-    .btn:active           { transform: translateY(-1px) scale(0.99); }
+    .btn:hover .btn-seta  { opacity:1; transform:translateX(0); }
+    .btn:hover .btn-icone { transform:scale(1.2) rotate(-5deg); }
+    .btn:hover            { transform:translateY(-3px) scale(1.02); }
+    .btn:active           { transform:translateY(-1px) scale(0.99); }
 
-    /* ------ Variante Primária (vinho sólido) ------ */
     .btn-primario {
       background: linear-gradient(135deg, var(--vinho) 0%, var(--vinho-escuro) 100%);
       color: var(--beje-claro);
-      box-shadow: 0 4px 22px rgba(107, 30, 53, 0.4);
+      box-shadow: 0 4px 22px rgba(107,30,53,0.4);
     }
+    .btn-primario::before { background: linear-gradient(135deg, var(--vinho-claro), var(--vinho)); }
+    .btn-primario:hover   { box-shadow: 0 8px 32px rgba(107,30,53,0.65), 0 0 0 1px rgba(201,185,154,0.2); }
+    .btn-primario:hover::before { opacity:1; }
 
-    .btn-primario::before {
-      background: linear-gradient(135deg, var(--vinho-claro), var(--vinho));
-    }
-
-    .btn-primario:hover {
-      box-shadow: 0 8px 32px rgba(107, 30, 53, 0.65), 0 0 0 1px rgba(201, 185, 154, 0.2);
-    }
-
-    .btn-primario:hover::before { opacity: 1; }
-
-    /* ------ Variante Escura (vinho mais escuro) ------ */
     .btn-escuro {
       background: linear-gradient(135deg, var(--vinho-escuro) 0%, #2E0A16 100%);
       color: var(--beje-claro);
-      box-shadow: 0 4px 22px rgba(74, 18, 36, 0.45);
+      box-shadow: 0 4px 22px rgba(74,18,36,0.45);
     }
+    .btn-escuro::before { background: linear-gradient(135deg, var(--vinho), var(--vinho-escuro)); }
+    .btn-escuro:hover   { box-shadow: 0 8px 32px rgba(74,18,36,0.65), 0 0 0 1px rgba(201,185,154,0.15); }
+    .btn-escuro:hover::before { opacity:1; }
 
-    .btn-escuro::before {
-      background: linear-gradient(135deg, var(--vinho), var(--vinho-escuro));
-    }
-
-    .btn-escuro:hover {
-      box-shadow: 0 8px 32px rgba(74, 18, 36, 0.65), 0 0 0 1px rgba(201, 185, 154, 0.15);
-    }
-
-    .btn-escuro:hover::before { opacity: 1; }
-
-    /* ------ Variante Contorno (LinkedIn) ------ */
     .btn-contorno {
-      background: transparent;
-      color: var(--beje);
-      border: 1px solid rgba(201, 185, 154, 0.22);
+      background: rgba(255,255,255,0.04); color: #D8C8A8;
+      border: 1px solid rgba(201,185,154,0.35);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.50);
     }
+    .btn-contorno::before { background: rgba(92,18,40,0.22); }
+    .btn-contorno:hover   { border-color:rgba(201,185,154,0.60); color:#F0E4CC; box-shadow:0 4px 22px rgba(92,18,40,0.25),inset 0 0 20px rgba(92,18,40,0.15); }
+    .btn-contorno:hover::before { opacity:1; }
 
-    .btn-contorno::before {
-      background: rgba(107, 30, 53, 0.18);
-    }
-
-    .btn-contorno:hover {
-      border-color: rgba(201, 185, 154, 0.5);
-      color: var(--beje-claro);
-      box-shadow: 0 4px 22px rgba(107, 30, 53, 0.2), inset 0 0 20px rgba(107, 30, 53, 0.12);
-    }
-
-    .btn-contorno:hover::before { opacity: 1; }
-
-    /* ------ Variante WhatsApp (verde) ------ */
     .btn-whatsapp {
-      background: transparent;
-      color: var(--verde-wp);
-      border: 1px solid rgba(76, 175, 130, 0.22);
+      background: rgba(255,255,255,0.04); color: #5FD4A0;
+      border: 1px solid rgba(76,175,130,0.35);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.50);
     }
+    .btn-whatsapp::before { background: rgba(76,175,130,0.10); }
+    .btn-whatsapp:hover   { border-color:rgba(76,175,130,0.60); color:#80E8BA; box-shadow:0 4px 22px rgba(76,175,130,0.22); }
+    .btn-whatsapp:hover::before { opacity:1; }
 
-    .btn-whatsapp::before {
-      background: rgba(76, 175, 130, 0.09);
-    }
-
-    .btn-whatsapp:hover {
-      border-color: rgba(76, 175, 130, 0.5);
-      box-shadow: 0 4px 22px rgba(76, 175, 130, 0.18);
-    }
-
-    .btn-whatsapp:hover::before { opacity: 1; }
-
-    /* =============================================
-       TAGS / BADGES DE ESPECIALIDADES
-       ============================================= */
     .tags {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 2rem;
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 2rem;
     }
 
     .tag {
-      font-size: 10px;
-      color: var(--beje-escuro);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid rgba(201, 185, 154, 0.15);
-      background: rgba(201, 185, 154, 0.04);
-      transition: all 0.3s ease;
-      cursor: none;
+      font-size: 10px; color: #B8A888;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 20px;
+      border: 1px solid rgba(201,185,154,0.28);
+      background: rgba(201,185,154,0.07);
+      transition: all 0.3s ease; cursor: none;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.45);
     }
-
     .tag:hover {
-      border-color: rgba(201, 185, 154, 0.38);
-      color: var(--beje);
-      background: rgba(201, 185, 154, 0.09);
+      border-color: rgba(201,185,154,0.55);
+      color: #E8DDD0; background: rgba(201,185,154,0.14);
     }
 
-    /* =============================================
-       RODAPÉ
-       ============================================= */
     .rodape {
-      font-size: 11px;
-      color: rgba(201, 185, 154, 0.28);
-      letter-spacing: 1px;
-      text-align: center;
+      font-size: 11px; color: rgba(201,185,154,0.50);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.50);
+      letter-spacing: 1px; text-align: center;
     }
 
-    /* =============================================
-       RESPONSIVIDADE MOBILE
-       ============================================= */
     @media (max-width: 480px) {
-      .container {
-        padding: 2.5rem 1.25rem 2rem;
-      }
-
-      .nome {
-        font-size: 26px;
-      }
-
-      .codigo-decorativo {
-        display: none; /* esconde código decorativo em telas pequenas */
-      }
-
-      .bg-orb-1, .bg-orb-2 {
-        display: none;
-      }
-
-      /* Cursor padrão em touch devices */
+      .container { padding: 2.5rem 1.25rem 2rem; }
+      .nome { font-size: 26px; }
+      .codigo-decorativo { display: none; }
+      .bg-orb-1, .bg-orb-2 { display: none; }
       body { cursor: auto; }
       #cursor, #cursor-trail { display: none; }
     }
 
-    /* =============================================
-       ACESSIBILIDADE: FOCO VISÍVEL PARA TECLADO
-       ============================================= */
-    .btn:focus-visible {
-      outline: 2px solid var(--beje);
-      outline-offset: 3px;
-    }
+    .btn:focus-visible { outline: 2px solid var(--beje); outline-offset: 3px; }
   </style>
 </head>
 <body>
 
-  <!-- =============================================
-       CURSOR SVG CUSTOMIZADO (ícone de código)
-       ============================================= -->
   <svg id="cursor" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M4 4L10 17L12 12L17 10L4 4Z" fill="#C9B99A" stroke="#6B1E35" stroke-width="1.2" stroke-linejoin="round"/>
     <circle cx="17" cy="17" r="2.2" fill="#6B1E35"/>
   </svg>
-
-  <!-- Anel de trail do cursor -->
   <svg id="cursor-trail" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <circle cx="22" cy="22" r="18" stroke="#6B1E35" stroke-width="0.6"/>
     <circle cx="22" cy="22" r="7" stroke="#C9B99A" stroke-width="0.5" opacity="0.5"/>
   </svg>
 
-  <!-- =============================================
-       ELEMENTOS DE FUNDO
-       ============================================= -->
-  <div class="bg-grid" aria-hidden="true"></div>
-  <div class="bg-glow" aria-hidden="true"></div>
-  <div class="bg-orb-1" aria-hidden="true"></div>
-  <div class="bg-orb-2" aria-hidden="true"></div>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+  <div class="blob b5"></div>
+  <div class="blob b6"></div>
+  <div class="blob b7"></div>
+
+  <div class="bg-grid"      aria-hidden="true"></div>
+  <div class="bg-glow"      aria-hidden="true"></div>
+  <div class="bg-orb-1"     aria-hidden="true"></div>
+  <div class="bg-orb-2"     aria-hidden="true"></div>
   <div class="bg-scanlines" aria-hidden="true"></div>
 
-  <!-- Código decorativo nas laterais -->
+  <canvas id="canvas-circuito"></canvas>
+
   <pre class="codigo-decorativo codigo-esquerda" aria-hidden="true">def automatizar():
     while True:
         processo.executar()
@@ -585,56 +521,43 @@ from ia import modelo
 dashboard = criar()
 dashboard.deploy()</pre>
 
-  <!-- =============================================
-       CONTEÚDO PRINCIPAL
-       ============================================= -->
   <main class="container">
 
-    <!-- Foto de Perfil -->
     <div class="foto-wrapper">
+      <canvas id="canvas-foto" width="160" height="160"></canvas>
       <div class="foto-anel">
         <div class="foto-interna">
-          <!--
-            PARA ADICIONAR SUA FOTO:
-            1. Coloque sua foto (ex: foto.jpg) na mesma pasta do index.html
-            2. Substitua a linha abaixo por:
-               <img src="foto.jpg" alt="Breno Zanon" style="width:100%;height:100%;object-fit:cover;" />
-            3. Pode apagar a div.foto-iniciais
-          -->
-          <img src="img_perfil.jpeg" alt="Breno Zanon" style="width:100%;height:100%;object-fit:cover;" />
+          <img src="img_perfil.jpeg" alt="Breno Zanon"
+               style="width:100%;height:100%;object-fit:cover;"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="foto-iniciais" style="display:none;">BZ</div>
         </div>
       </div>
       <div class="status-online" title="Disponível para projetos"></div>
     </div>
 
-    <!-- Nome e Cargo -->
     <h1 class="nome">Breno <span>Zanon</span></h1>
     <p class="cargo">Automação &amp; Dados</p>
     <div class="divisor" aria-hidden="true"></div>
 
-    <!-- Bio / Descrição -->
     <p class="bio">
       Transformo processos manuais em <strong>automações inteligentes</strong> com
       Python, Power BI, Excel, Power Automate, Power Apps e IA.
     </p>
 
-    <!-- Botões de Link -->
     <nav class="botoes" aria-label="Links de navegação">
 
-      <!-- Botão: Sobre mim -->
-      <a href="sobre.html" class="btn btn-primario" aria-label="Sobre mim">
+      <a href="sobre.html" class="btn btn-primario">
         <span class="btn-icone" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
           </svg>
         </span>
         <span class="btn-texto">Sobre mim</span>
         <i class="btn-seta" aria-hidden="true">→</i>
       </a>
 
-      <!-- Botão: GitHub -->
-      <a href="https://github.com/BrenoZG" target="_blank" rel="noopener noreferrer" class="btn btn-escuro" aria-label="GitHub — abre em nova aba">
+      <a href="https://github.com/BrenoZG" target="_blank" rel="noopener noreferrer" class="btn btn-escuro">
         <span class="btn-icone" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -644,22 +567,18 @@ dashboard.deploy()</pre>
         <i class="btn-seta" aria-hidden="true">→</i>
       </a>
 
-      <!-- Botão: Projetos -->
-      <a href="Projetos.html" class="btn btn-escuro" aria-label="Projetos">
+      <a href="Projetos.html" class="btn btn-escuro">
         <span class="btn-icone" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7"/>
-            <rect x="14" y="3" width="7" height="7"/>
-            <rect x="14" y="14" width="7" height="7"/>
-            <rect x="3" y="14" width="7" height="7"/>
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
           </svg>
         </span>
         <span class="btn-texto">Projetos</span>
         <i class="btn-seta" aria-hidden="true">→</i>
       </a>
 
-      <!-- Botão: LinkedIn -->
-      <a href="https://www.linkedin.com/in/breno-zanon-bb2118263/" target="_blank" rel="noopener noreferrer" class="btn btn-contorno" aria-label="LinkedIn — abre em nova aba">
+      <a href="https://www.linkedin.com/in/breno-zanon-bb2118263/" target="_blank" rel="noopener noreferrer" class="btn btn-contorno">
         <span class="btn-icone" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -669,8 +588,7 @@ dashboard.deploy()</pre>
         <i class="btn-seta" aria-hidden="true">→</i>
       </a>
 
-      <!-- Botão: WhatsApp -->
-      <a href="https://wa.me/5532984332112?text=Olá%2C%20vim%20pelo%20seu%20site%20e%20quero%20saber%20mais" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" aria-label="Falar no WhatsApp — abre em nova aba">
+      <a href="https://wa.me/5532984332112?text=Olá%2C%20vim%20pelo%20seu%20site%20e%20quero%20saber%20mais" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
         <span class="btn-icone" aria-hidden="true">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -682,78 +600,262 @@ dashboard.deploy()</pre>
 
     </nav>
 
-    <!-- Tags de especialidades -->
     <div class="tags" aria-label="Especialidades">
       <span class="tag">+ Projetos em automação</span>
       <span class="tag">• Dashboards estratégicos</span>
       <span class="tag">• Integrações com APIs</span>
     </div>
 
-    <!-- Rodapé -->
     <footer>
       <p class="rodape">© 2026 • Desenvolvido por Breno Zanon</p>
     </footer>
 
   </main>
 
-  <!-- =============================================
-       JAVASCRIPT: CURSOR E ANIMAÇÕES
-       ============================================= -->
   <script>
-    /**
-     * Controle do cursor customizado.
-     * O cursor principal segue o mouse instantaneamente.
-     * O trail (anel) segue com um delay suave (lerp).
-     */
+    (function() {
+      const cc  = document.getElementById('canvas-circuito');
+      const ctx = cc.getContext('2d');
+      let W, H;
+
+      function resize() {
+        W = cc.width  = window.innerWidth;
+        H = cc.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', () => { resize(); gerarCircuitos(); });
+
+      const defCircuitos = [
+        { pts: [[0.02,0.10],[0.12,0.10],[0.12,0.22],[0.24,0.22],[0.24,0.38],[0.38,0.38]], cor:'vinho' },
+        { pts: [[0.0,0.65],[0.08,0.65],[0.08,0.52],[0.18,0.52],[0.18,0.40],[0.30,0.40]], cor:'branco' },
+        { pts: [[1.0,0.18],[0.90,0.18],[0.90,0.30],[0.78,0.30],[0.78,0.44],[0.65,0.44]], cor:'vinho' },
+        { pts: [[0.98,0.72],[0.85,0.72],[0.85,0.58],[0.72,0.58],[0.72,0.46]], cor:'branco' },
+        { pts: [[0.0,0.82],[0.14,0.82],[0.14,0.70],[0.28,0.70],[0.28,0.60],[0.40,0.60]], cor:'vinho' },
+        { pts: [[1.0,0.88],[0.86,0.88],[0.86,0.76],[0.70,0.76],[0.70,0.62]], cor:'branco' },
+        { pts: [[0.20,0.04],[0.35,0.04],[0.35,0.12],[0.55,0.12],[0.55,0.04],[0.75,0.04]], cor:'vinho' },
+        { pts: [[0.15,0.96],[0.30,0.96],[0.30,0.88],[0.50,0.88],[0.50,0.96],[0.68,0.96]], cor:'branco' },
+      ];
+
+      function toPixel(p) { return [p[0] * W, p[1] * H]; }
+
+      function comprimentoTotal(pts) {
+        let total = 0;
+        for (let i = 1; i < pts.length; i++) {
+          const [ax, ay] = toPixel(pts[i-1]);
+          const [bx, by] = toPixel(pts[i]);
+          total += Math.hypot(bx - ax, by - ay);
+        }
+        return total;
+      }
+
+      function posNoCaminho(pts, t) {
+        const total = comprimentoTotal(pts);
+        let dist = t * total;
+        for (let i = 1; i < pts.length; i++) {
+          const [ax, ay] = toPixel(pts[i-1]);
+          const [bx, by] = toPixel(pts[i]);
+          const seg = Math.hypot(bx - ax, by - ay);
+          if (dist <= seg) {
+            const r = dist / seg;
+            return [ax + (bx - ax) * r, ay + (by - ay) * r];
+          }
+          dist -= seg;
+        }
+        return toPixel(pts[pts.length - 1]);
+      }
+
+      let pulsos = [];
+
+      function gerarCircuitos() {
+        pulsos = defCircuitos.map((def, i) => ({
+          def,
+          progresso: Math.random(),
+          velocidade: 0.0018 + Math.random() * 0.0022,
+          rastro: [],
+          comprimento: comprimentoTotal(def.pts),
+        }));
+      }
+      gerarCircuitos();
+
+      function corPulso(tipo, alpha) {
+        if (tipo === 'vinho') return `rgba(160,50,80,${alpha.toFixed(2)})`;
+        return `rgba(230,215,195,${alpha.toFixed(2)})`;
+      }
+
+      function frameCircuito() {
+        ctx.clearRect(0, 0, W, H);
+
+        pulsos.forEach(p => {
+          const { def } = p;
+
+          ctx.save();
+          ctx.beginPath();
+          const [px0, py0] = toPixel(def.pts[0]);
+          ctx.moveTo(px0, py0);
+          for (let i = 1; i < def.pts.length; i++) {
+            const [px, py] = toPixel(def.pts[i]);
+            ctx.lineTo(px, py);
+          }
+          ctx.strokeStyle = def.cor === 'vinho' ? 'rgba(100,20,40,0.12)' : 'rgba(210,195,170,0.10)';
+          ctx.lineWidth   = 1.0;
+          ctx.stroke();
+
+          def.pts.forEach(pt => {
+            const [nx, ny] = toPixel(pt);
+            ctx.fillStyle = def.cor === 'vinho' ? 'rgba(120,30,55,0.20)' : 'rgba(210,195,170,0.18)';
+            ctx.fillRect(nx - 1.5, ny - 1.5, 3, 3);
+          });
+          ctx.restore();
+
+          p.progresso += p.velocidade;
+          if (p.progresso >= 1.0) p.progresso = 0;
+
+          const [cx, cy] = posNoCaminho(def.pts, p.progresso);
+
+          p.rastro.push({ x: cx, y: cy });
+          const MAX_RASTRO = 55;
+          if (p.rastro.length > MAX_RASTRO) p.rastro.shift();
+
+          p.rastro.forEach((pt, idx) => {
+            const t = idx / p.rastro.length;
+            const a = t * t * 0.75;
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, 1.2 + t * 1.0, 0, Math.PI * 2);
+            ctx.fillStyle = corPulso(def.cor, a);
+            ctx.fill();
+          });
+
+          const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 14);
+          if (def.cor === 'vinho') {
+            grad.addColorStop(0, 'rgba(200,60,100,0.90)');
+            grad.addColorStop(0.3, 'rgba(160,40,70,0.50)');
+            grad.addColorStop(1,   'rgba(120,20,50,0.00)');
+          } else {
+            grad.addColorStop(0, 'rgba(255,245,225,0.95)');
+            grad.addColorStop(0.3, 'rgba(220,200,170,0.55)');
+            grad.addColorStop(1,   'rgba(200,180,150,0.00)');
+          }
+          ctx.beginPath();
+          ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(cx, cy, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = def.cor === 'vinho' ? 'rgba(255,160,180,0.95)' : 'rgba(255,252,240,1.00)';
+          ctx.fill();
+        });
+
+        requestAnimationFrame(frameCircuito);
+      }
+
+      frameCircuito();
+    })();
+
     const cursor      = document.getElementById('cursor');
     const cursorTrail = document.getElementById('cursor-trail');
+    let mx = 0, my = 0, tx = 0, ty = 0;
 
-    let mousePosX = 0, mousePosY = 0;   // posição real do mouse
-    let trailX = 0, trailY = 0;         // posição atual do trail (com lerp)
-
-    // Atualiza posição do cursor principal imediatamente
-    document.addEventListener('mousemove', (evento) => {
-      mousePosX = evento.clientX;
-      mousePosY = evento.clientY;
-
-      cursor.style.left = (mousePosX - 11) + 'px';
-      cursor.style.top  = (mousePosY - 11) + 'px';
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = (mx - 11) + 'px';
+      cursor.style.top  = (my - 11) + 'px';
     });
 
-    // Animação do trail com interpolação linear (lerp)
-    function animarTrail() {
-      // Fator de suavização: 0.12 = lento/suave, 0.3 = rápido/direto
-      const fatorSuavizacao = 0.12;
-      trailX += (mousePosX - trailX) * fatorSuavizacao;
-      trailY += (mousePosY - trailY) * fatorSuavizacao;
+    (function loopTrail() {
+      tx += (mx - tx) * 0.12;
+      ty += (my - ty) * 0.12;
+      cursorTrail.style.left = (tx - 22) + 'px';
+      cursorTrail.style.top  = (ty - 22) + 'px';
+      requestAnimationFrame(loopTrail);
+    })();
 
-      cursorTrail.style.left = (trailX - 22) + 'px';
-      cursorTrail.style.top  = (trailY - 22) + 'px';
-
-      requestAnimationFrame(animarTrail);
-    }
-    animarTrail();
-
-    // Efeito de escala do cursor ao passar em botões e links
-    const elementosInterativos = document.querySelectorAll('.btn, .tag, a');
-
-    elementosInterativos.forEach(elemento => {
-      elemento.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.btn, .tag, a').forEach(el => {
+      el.addEventListener('mouseenter', () => {
         cursor.style.transform      = 'scale(1.6)';
         cursorTrail.style.transform = 'scale(1.35)';
       });
-      elemento.addEventListener('mouseleave', () => {
+      el.addEventListener('mouseleave', () => {
         cursor.style.transform      = 'scale(1)';
         cursorTrail.style.transform = 'scale(1)';
       });
     });
 
-    // Em dispositivos touch não exibe o cursor customizado
     if (window.matchMedia('(pointer: coarse)').matches) {
-      cursor.style.display      = 'none';
-      cursorTrail.style.display = 'none';
+      cursor.style.display = cursorTrail.style.display = 'none';
       document.body.style.cursor = 'auto';
     }
+
+    (function() {
+      const fc  = document.getElementById('canvas-foto');
+      const ctx = fc.getContext('2d');
+      const S   = 160;
+      const CX  = S / 2;
+      const CY  = S / 2;
+      const R   = 62;
+      const RASTRO = 80;
+
+      const pulsos = [
+        { ang: 0,       vel:  0.028, cor: 'vinho',  hist: [] },
+        { ang: Math.PI, vel: -0.022, cor: 'branco', hist: [] },
+      ];
+
+      function frameFoto() {
+        ctx.clearRect(0, 0, S, S);
+
+        ctx.beginPath();
+        ctx.arc(CX, CY, R, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(180,140,160,0.10)';
+        ctx.lineWidth   = 1;
+        ctx.stroke();
+
+        pulsos.forEach(p => {
+          p.ang += p.vel;
+          p.hist.push(p.ang);
+          if (p.hist.length > RASTRO) p.hist.shift();
+
+          p.hist.forEach((a, i) => {
+            const t  = i / p.hist.length;
+            const op = t * t * 0.80;
+            const px = CX + Math.cos(a) * R;
+            const py = CY + Math.sin(a) * R;
+            ctx.beginPath();
+            ctx.arc(px, py, 0.8 + t * 1.4, 0, Math.PI * 2);
+            ctx.fillStyle = p.cor === 'vinho'
+              ? `rgba(190,60,90,${op.toFixed(2)})`
+              : `rgba(240,228,210,${op.toFixed(2)})`;
+            ctx.fill();
+          });
+
+          const hx = CX + Math.cos(p.ang) * R;
+          const hy = CY + Math.sin(p.ang) * R;
+
+          const g = ctx.createRadialGradient(hx, hy, 0, hx, hy, 12);
+          if (p.cor === 'vinho') {
+            g.addColorStop(0,   'rgba(220,70,110,0.95)');
+            g.addColorStop(0.4, 'rgba(160,40,70,0.45)');
+            g.addColorStop(1,   'rgba(120,20,50,0.00)');
+          } else {
+            g.addColorStop(0,   'rgba(255,248,232,1.00)');
+            g.addColorStop(0.4, 'rgba(220,200,170,0.50)');
+            g.addColorStop(1,   'rgba(200,180,150,0.00)');
+          }
+          ctx.beginPath();
+          ctx.arc(hx, hy, 12, 0, Math.PI * 2);
+          ctx.fillStyle = g;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(hx, hy, 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = p.cor === 'vinho' ? 'rgba(255,180,200,0.98)' : 'rgba(255,255,240,1.00)';
+          ctx.fill();
+        });
+
+        requestAnimationFrame(frameFoto);
+      }
+
+      frameFoto();
+    })();
   </script>
 
 </body>
