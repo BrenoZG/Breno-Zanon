@@ -1,71 +1,77 @@
-**Olá! Eu sou Breno Zanon**
-
-**Sobre Mim**
-
-Desenvolvedor Python Fullstack apaixonado por criar soluções que automatizam processos e geram valor real para negócios. Especialista em integrar tecnologias para transformar tarefas manuais em workflows inteligentes.
-
-**Tecnologias & Ferramentas**
-
-**Desenvolvimento**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-
-**Frameworks & Bibliotecas**
-
-![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
-![Pyautogui](https://img.shields.io/badge/PyAutoGUI-3776AB?style=for-the-badge&logo=python&logoColor=white)
-
-**Microsoft Power Platform**
-
-![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
-![Excel](https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)
-![Power Automate](https://img.shields.io/badge/Power_Automate-0066FF?style=for-the-badge&logo=power-automate&logoColor=white)
-![Power Apps](https://img.shields.io/badge/Power_Apps-742774?style=for-the-badge&logo=powerapps&logoColor=white)
-![Azure](https://img.shields.io/badge/Microsoft_Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-
-**Banco de Dados & APIs**
-
-![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![REST API](https://img.shields.io/badge/REST_API-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
-
-**Ferramentas**
-
-![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Windows](https://img.shields.io/badge/Windows_11-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-
-**Áreas de Expertise**
-
-- 🤖 **RPA & Automação**: Desenvolvimento de robôs que executam tarefas repetitivas
-- 🔗 **Integração de APIs**: Conectando sistemas e plataformas diferentes
-- 🧠 **Inteligência Artificial**: Aplicando IA para resolver problemas práticos
-- 📊 **Business Intelligence**: Transformando dados em insights acionáveis
-- ⚡ **Otimização de Processos**: Identificando gargalos e criando soluções eficientes
-
-**Atualmente**
-
-- Aprofundando conhecimentos em IA e Machine Learning
-- Desenvolvendo projetos de automação inteligente
-- Explorando novas integrações com Microsoft Power Platform
-
-**Onde me Encontrar**
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/SEU_LINKEDIN)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SEU_USUARIO)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:zanon605@gmail.com)
-
-**Filosofia de Código**
-
-> "A melhor automação é aquela que você esquece que existe - simplesmente funciona."
-
-Acredito em escrever código limpo, bem documentado e que resolva problemas reais. Cada linha de código deve ter um propósito claro e agregar valor.
-
+# Breno Zanon
+ 
+**Desenvolvedor & Analista de Dados** · Juiz de Fora, MG — Brasil
+ 
+> Do dado bruto à interface onde a decisão acontece.
+ 
+Trabalho nas duas pontas do mesmo sistema. De um lado, dados: modelagem, ETL e dashboards conectados direto ao banco. Do outro, desenvolvimento: do banco à interface que alguém abre todo dia.
+ 
+Antes de programar, executei o processo. Foram seis anos em logística, faturamento e e-commerce — emitindo CTe, conferindo nota, montando indicador no Excel porque o sistema não entregava. Isso muda a pergunta: em vez de *"o que dá para fazer?"*, vira *"onde a pessoa está perdendo tempo de verdade?"*.
+ 
 ---
-
-⭐️ Gostou dos meus projetos? Deixe uma estrela! | 💬 Tem uma ideia? Vamos conversar!
+ 
+## Como eu trabalho
+ 
+**Número precisa de definição.** Toda métrica tem numerador, denominador, grão e janela de tempo definidos antes de virar gráfico. Sem isso, duas áreas chegam a resultados diferentes e ninguém sabe qual está certo.
+ 
+**Grão antes da agregação.** JOIN que multiplica linhas infla a soma sem avisar, e o número errado circula por semanas com aparência de certo. Confiro a contagem antes e depois de cada relacionamento.
+ 
+**Validação no servidor, sempre.** Regra que só existe no navegador não existe — qualquer pessoa abre o DevTools ou chama a API direto. Filtro de interface é conveniência de UX, nunca controle de acesso.
+ 
+**Diagnóstico antes de automatizar.** Processo instável vira automação que quebra toda semana. Entender o que vale automatizar vem antes de automatizar.
+ 
+---
+ 
+## Stack
+ 
+Escala honesta de propósito — listar tudo como domínio total só garante que a entrevista técnica vai encontrar o buraco.
+ 
+### Dados & BI
+ 
+| | Nível |
+|---|---|
+| Power BI · SQL · Power Query · Excel avançado | Uso em produção |
+| Modelagem de dados · ETL · DAX · Microsoft Fabric · SharePoint | Já entreguei com isso |
+ 
+### Desenvolvimento
+ 
+| | Nível |
+|---|---|
+| Python | Uso em produção |
+| JavaScript · HTML/CSS · React · Next.js · PostgreSQL · Flask · Git | Já entreguei com isso |
+| TypeScript · Node.js | Em aprendizado ativo |
+ 
+### Automação & Power Platform
+ 
+| | Nível |
+|---|---|
+| RPA (PyAutoGUI, Selenium) · Automação de relatórios | Uso em produção |
+| Power Automate · Power Apps · VBA · Integração entre sistemas | Já entreguei com isso |
+ 
+### Processo & Operação
+ 
+| | Nível |
+|---|---|
+| ERP TOTVS · Logística e faturamento · E-commerce · Definição de indicadores | Uso em produção |
+| Scrum · Azure DevOps | Já entreguei com isso |
+ 
+---
+ 
+## Projetos
+ 
+<!-- Preencher conforme republicar. Mantenha só o que está no ar. -->
+ 
+| Projeto | O que é | Stack |
+|---|---|---|
+| **Portfólio** | Site com estudos de caso — problema, decisão tomada e o que foi descartado | Next.js · TypeScript · Tailwind |
+| **Gestão de Finanças** | Aplicação web para orçamento pessoal: receitas, gastos por categoria, cartão e painel de saldo | Python · Flask · SQLAlchemy · PostgreSQL |
+| **RPA — Faturamento Curva ABC** | Automação desktop que fatura produtos da curva ABC no ERP, com log e notificação por e-mail | Python · PyAutoGUI |
+ 
+---
+ 
+## Onde me encontrar
+ 
+- **Portfólio:** <!-- link da Vercel aqui -->
+- **LinkedIn:** [in/breno-zanon-dev](https://www.linkedin.com/in/breno-zanon-dev/)
+- **E-mail:** b.goncalves0899@gmail.com
+Aberto a vagas e projetos freelance.
