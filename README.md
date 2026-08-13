@@ -39,7 +39,7 @@ Escala honesta de propósito — listar tudo como domínio total só garante que
 |---|---|
 | Python | Uso em produção |
 | JavaScript · HTML/CSS · React · Next.js · PostgreSQL · Flask · Git | Já entreguei com isso |
-| TypeScript · Node.js | Em aprendizado ativo |
+| TypeScript · Node.js | Já entreguei com isso |
  
 ### Automação & Power Platform
  
