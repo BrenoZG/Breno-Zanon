@@ -57,18 +57,6 @@ Escala honesta de propósito — listar tudo como domínio total só garante que
  
 ---
  
-## Projetos
- 
-<!-- Preencher conforme republicar. Mantenha só o que está no ar. -->
- 
-| Projeto | O que é | Stack |
-|---|---|---|
-| **Portfólio** | Site com estudos de caso — problema, decisão tomada e o que foi descartado | Next.js · TypeScript · Tailwind |
-| **Gestão de Finanças** | Aplicação web para orçamento pessoal: receitas, gastos por categoria, cartão e painel de saldo | Python · Flask · SQLAlchemy · PostgreSQL |
-| **RPA — Faturamento Curva ABC** | Automação desktop que fatura produtos da curva ABC no ERP, com log e notificação por e-mail | Python · PyAutoGUI |
- 
----
- 
 ## Onde me encontrar
  
 - **Portfólio:** <!-- link da Vercel aqui -->
