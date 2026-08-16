@@ -59,7 +59,7 @@ Escala honesta de propósito — listar tudo como domínio total só garante que
  
 ## Onde me encontrar
  
-- **Portfólio:** <!-- link da Vercel aqui -->
+- **Portfólio:** [breno-zanon.vercel.app](https://breno-zanon.vercel.app)
 - **LinkedIn:** [in/breno-zanon-dev](https://www.linkedin.com/in/breno-zanon-dev/)
 - **E-mail:** b.goncalves0899@gmail.com
 Aberto a vagas e projetos freelance.
